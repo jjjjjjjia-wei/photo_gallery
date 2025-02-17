@@ -10,7 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
         
         body {
-            font-family: 'Great Vibes', 'Dancing Script', 'Pacifico', 'Brush Script MT', 'Comic Sans MS', cursive;
+            font-family: 'Dancing Script', cursive, 'Brush Script MT', 'Comic Sans MS', cursive;
             text-align: center;
             background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -60,8 +60,9 @@
     </div>
     <p class="quote">Maybe it is our imperfections which make us so perfect for one another.</p>
     
-    <!-- 背景音樂自動播放 -->
-    <audio id="bg-music" src="background-music.mp3" loop autoplay></audio>
+    <!-- 背景音樂 -->
+    <audio id="bg-music" src="background-music.mp3" loop></audio>
+    <button id="music-toggle" class="music-control">🎵</button>
     
     <script>
         const photos = [
@@ -111,6 +112,20 @@
                 showNextMedia();
             }
         }, 5000);
+        
+        // 背景音樂控制
+        const bgMusic = document.getElementById("bg-music");
+        const musicToggle = document.getElementById("music-toggle");
+        
+        musicToggle.addEventListener("click", () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                musicToggle.textContent = "🔊";
+            } else {
+                bgMusic.pause();
+                musicToggle.textContent = "🎵";
+            }
+        });
     </script>
 </body>
 </html>
