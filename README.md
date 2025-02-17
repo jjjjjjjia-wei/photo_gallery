@@ -47,7 +47,7 @@
     </div>
     <p class="quote">Maybe it is our imperfections which make us so perfect for one another.</p>
 
-    <audio id="bg-music" src="background-music.mp3" loop autoplay></audio>
+    <audio id="bg-music" src="music.mp3" loop autoplay></audio>
     
     <script>
         const photos = [
