@@ -49,9 +49,13 @@
     <p class="quote">Maybe it is our imperfections which make us so perfect for one another.</p>
     <script>
         const photos = [
-            'photo1.jpg', 
+            'photo1.jpg', // 替換為你的照片名稱
             'photo2.jpg', 
-            'photo3.jpg' // 替換為你的照片名稱
+            'photo3.jpg',
+            'photo4.jpg', 
+            'photo5.jpg',
+            'photo6.jpg', 
+            'photo7.jpg',
         ];
         const videoSrc = 'video.mp4'; // 替換為你的影片名稱
         
