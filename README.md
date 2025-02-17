@@ -1,15 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Memories</title>
     
-    <!-- 確保 Google Fonts 正確載入 -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
+        /* 確保 Google Fonts 正確載入 */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+        
         body {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Dancing Script', cursive, 'Brush Script MT', 'Comic Sans MS', cursive;
             text-align: center;
             background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -40,6 +41,16 @@
             margin-top: 20px;
             color: #ff69b4;
         }
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -50,16 +61,17 @@
     <p class="quote">Maybe it is our imperfections which make us so perfect for one another.</p>
     
     <!-- 背景音樂 -->
-    <audio id="bg-music" src="background-music.mp3" loop autoplay></audio>
+    <audio id="bg-music" src="background-music.mp3" loop></audio>
+    <button id="music-toggle" class="music-control">🎵</button>
     
     <script>
         const photos = [
             'photo1.jpg', 
             'photo2.jpg', 
-            'photo3.jpg', 
+            'photo3.jpg',
             'photo4.jpg', 
             'photo5.jpg', 
-            'photo6.jpg', 
+            'photo6.jpg',
             'photo7.jpg'
         ];
         const videoSrc = 'video.mp4'; // 替換為你的影片名稱
@@ -100,6 +112,27 @@
                 showNextMedia();
             }
         }, 5000);
+        
+        // 背景音樂控制
+        const bgMusic = document.getElementById("bg-music");
+        const musicToggle = document.getElementById("music-toggle");
+        
+        musicToggle.addEventListener("click", () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                musicToggle.textContent = "🔊";
+            } else {
+                bgMusic.pause();
+                musicToggle.textContent = "🎵";
+            }
+        });
+        
+        // 使用者點擊頁面後允許播放音樂（解決瀏覽器自動播放限制）
+        document.body.addEventListener("click", () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+            }
+        }, { once: true });
     </script>
 </body>
 </html>
