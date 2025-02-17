@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,8 +23,8 @@
             position: relative;
         }
         .gallery img, .gallery video {
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
@@ -47,6 +46,9 @@
         <!-- 這裡會插入照片與影片 -->
     </div>
     <p class="quote">Maybe it is our imperfections which make us so perfect for one another.</p>
+
+    <audio id="bg-music" src="background-music.mp3" loop autoplay></audio>
+    
     <script>
         const photos = [
             'photo1.jpg', // 替換為你的照片名稱
