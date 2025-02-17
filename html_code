@@ -23,7 +23,7 @@
             height: 60vh;
             position: relative;
         }
-        .gallery img {
+        .gallery img, .gallery video {
             width: 300px;
             height: 300px;
             object-fit: cover;
@@ -44,7 +44,7 @@
 <body>
     <h1>Our Memories</h1>
     <div class="gallery" id="photo-gallery">
-        <!-- 這裡會插入照片 -->
+        <!-- 這裡會插入照片與影片 -->
     </div>
     <p class="quote">Maybe it is our imperfections which make us so perfect for one another.</p>
     <script>
@@ -53,6 +53,7 @@
             'photo2.jpg', 
             'photo3.jpg' // 替換為你的照片名稱
         ];
+        const videoSrc = 'video.mp4'; // 替換為你的影片名稱
         
         const gallery = document.getElementById('photo-gallery');
         let currentIndex = 0;
@@ -64,15 +65,32 @@
             gallery.appendChild(img);
         });
         
-        function showNextImage() {
-            const images = document.querySelectorAll('.gallery img');
-            images.forEach(img => img.style.opacity = '0');
-            images[currentIndex].style.opacity = '1';
-            currentIndex = (currentIndex + 1) % images.length;
+        // 加入影片
+        const video = document.createElement('video');
+        video.src = videoSrc;
+        video.controls = true;
+        video.style.opacity = '0';
+        gallery.appendChild(video);
+        
+        function showNextMedia() {
+            const media = document.querySelectorAll('.gallery img, .gallery video');
+            media.forEach(item => item.style.opacity = '0');
+            
+            if (currentIndex < photos.length) {
+                media[currentIndex].style.opacity = '1';
+                currentIndex++;
+            } else {
+                video.style.opacity = '1';
+                video.play();
+            }
         }
         
-        showNextImage();
-        setInterval(showNextImage, 5000);
+        showNextMedia();
+        setInterval(() => {
+            if (currentIndex <= photos.length) {
+                showNextMedia();
+            }
+        }, 5000);
     </script>
 </body>
 </html>
